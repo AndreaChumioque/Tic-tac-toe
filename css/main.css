@@ -15,7 +15,7 @@ h1 {
 }
 
 .board {
-  margin: 75px auto;
+  margin: 60px auto;
   border-collapse: collapse;
 }
 
@@ -46,11 +46,21 @@ h1 {
 }
 
 .play-x {
-  color: #f33469;
+  color: #4BC6B9;
 }
 
 .play-o {
-  color: #3b77da;
+  color: #F7D08A;
+}
+
+div {
+  height: 25px;
+  margin-bottom: 30px;
+}
+
+#winnerMsg {
+  font-size: 1.5em;
+  color: #40d683;
 }
 
 #reset {
@@ -61,6 +71,10 @@ h1 {
   color: #fff;
   font-size: 1em;
   cursor: pointer;
+}
+
+#reset:focus {
+  outline: none;
 }
 
 #reset:hover {
