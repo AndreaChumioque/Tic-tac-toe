@@ -1,10 +1,9 @@
-window.onload = function () {
-  var board = document.querySelector('.board-js');
-  board.addEventListener('click', addMove);
+var board = document.querySelector('.board-js');
+board.addEventListener('click', addMove);
 
-  var resetButton = document.querySelector('#reset');
-  resetButton.addEventListener('click', resetGame);
-}
+var resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', resetGame);
+
 
 var centinel = true;
 var moves = 0;
@@ -24,11 +23,11 @@ function addMove(event) {
     if (moves >= 5 && moves < 10) {
       if (checkWinner(event.target.textContent)) {
         document.querySelector('#winnerMsg').textContent = 'Gana el jugador ' + event.target.textContent;
-      } else if(checkWinner(event.target.textContent) == false && moves == 9) {
-        document.querySelector('#winnerMsg').textContent = 'Nadie gana. ¡Es un empate!';      
+      } else if (checkWinner(event.target.textContent) == false && moves == 9) {
+        document.querySelector('#winnerMsg').textContent = 'Nadie gana. ¡Es un empate!';
       }
     }
-      
+
     centinel = !centinel;
   }
 }
@@ -43,7 +42,8 @@ function checkWinner(play) {
     checkRow(1, 4, 7, play) ||
     checkRow(2, 5, 8, play) ||
     checkRow(3, 6, 9, play)) {
-      centinel = true;
+    centinel = true;
+    board.removeEventListener('click', addMove);
   }
   return centinel;
 }
@@ -63,7 +63,8 @@ function resetGame(event) {
   var boxes = document.getElementsByTagName('td');
   for (var i = 0; i < boxes.length; i++)
     boxes[i].textContent = '';
-  
+
   document.querySelector('#winnerMsg').textContent = '';
   moves = 0;
+  board.addEventListener('click', addMove);
 }
